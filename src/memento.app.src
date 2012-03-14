@@ -1,0 +1,12 @@
+{application, memento,
+ [
+  {description, ""},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  snmp
+                 ]},
+  {env, []}
+ ]}.
