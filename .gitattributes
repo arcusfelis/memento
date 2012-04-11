@@ -1,0 +1,2 @@
+# Force binary mode
+priv/jquery/jquery.min.js -crlf

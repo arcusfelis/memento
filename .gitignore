@@ -1,0 +1,9 @@
+ebin/*
+deps/*
+*.swp
+*.dump
+*.trace  
+.eunit
+doc/README.md
+log/*
+Mnesia.*
