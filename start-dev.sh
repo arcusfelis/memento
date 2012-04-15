@@ -7,6 +7,6 @@ make
 exec erl -pa $PWD/ebin edit $PWD/deps/*/ebin \
     -boot start_sasl \
     -sname memento \
-    -s memw_app
-#   -s reloader
+    -s memw_app \
+    -s reloader
 
