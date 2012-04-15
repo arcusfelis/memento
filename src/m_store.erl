@@ -1,7 +1,8 @@
 -module(m_store).
 -export([up/0, down/0, data/0]).
 -export([all_entries/1,
-         get_entry_by_id/2]).
+         get_entry_by_id/2,
+         write/1]).
 
 -include_lib("memento_core/include/records.hrl").
 -include_lib("stdlib/include/qlc.hrl").
@@ -73,6 +74,17 @@ select(Q)->
             F = fun(QH)-> qlc:e(QH) end,
             mnesia:activity(transaction,F,[Q],mnesia_frag);
         true -> qlc:e(Q)
+    end.
+
+
+write(Rec) ->
+    case mnesia:is_transaction() of
+        false -> 
+            F = fun() -> mnesia:write(Rec) end,
+            {atomic, ok} = mnesia:transaction(F),
+            ok;
+        true -> 
+            mnesia:write(Rec)
     end.
 
 
